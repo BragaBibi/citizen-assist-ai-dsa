@@ -1,0 +1,194 @@
+[T01] Listar com lista vazia
+   Entrada   : listar()
+   Esperado  : []
+   Observado : []
+   Resultado : OK
+
+[T02] Consultar ID em lista vazia
+   Entrada   : buscar_por_id(1)
+   Esperado  : None
+   Observado : None
+   Resultado : OK
+
+[T03] Excluir em lista vazia
+   Entrada   : remover(1)
+   Esperado  : False
+   Observado : False
+   Resultado : OK
+
+[T04] Ordenar lista vazia
+   Entrada   : ordenar('id')
+   Esperado  : []
+   Observado : []
+   Resultado : OK
+
+[T05] Pesquisar em lista vazia
+   Entrada   : pesquisar('titulo','x')
+   Esperado  : []
+   Observado : []
+   Resultado : OK
+
+[T06] Cadastrar 5 registros
+   Entrada   : IDs 3,1,5,2,4
+   Esperado  : [3, 1, 5, 2, 4]
+   Observado : [3, 1, 5, 2, 4]
+   Resultado : OK
+
+[T07] Cadastro com ID duplicado
+   Entrada   : inserir(ID 3)
+   Esperado  : ValueError: Ja existe um registro com o identificador 3.
+   Observado : ValueError: Ja existe um registro com o identificador 3.
+   Resultado : OK
+
+[T08] Cadastro com titulo vazio
+   Entrada   : inserir(titulo='   ')
+   Esperado  : ValueError: O campo 'titulo' e obrigatorio e nao pode ficar vazio.
+   Observado : ValueError: O campo 'titulo' e obrigatorio e nao pode ficar vazio.
+   Resultado : OK
+
+[T09] Cadastro com ID invalido (negativo)
+   Entrada   : inserir(ID -5)
+   Esperado  : ValueError: O identificador deve ser um numero inteiro positivo.
+   Observado : ValueError: O identificador deve ser um numero inteiro positivo.
+   Resultado : OK
+
+[T10] Cadastro com ID de tipo incompativel
+   Entrada   : inserir(ID 'abc')
+   Esperado  : ValueError: O identificador deve ser um numero inteiro positivo.
+   Observado : ValueError: O identificador deve ser um numero inteiro positivo.
+   Resultado : OK
+
+[T11] Tamanho nao muda apos erros
+   Entrada   : tamanho
+   Esperado  : 5
+   Observado : 5
+   Resultado : OK
+
+[T12] Consultar ID existente
+   Entrada   : buscar_por_id(2)
+   Esperado  : Vacinacao
+   Observado : Vacinacao
+   Resultado : OK
+
+[T13] Consultar ID inexistente
+   Entrada   : buscar_por_id(99)
+   Esperado  : None
+   Observado : None
+   Resultado : OK
+
+[T14] Atualizar registro existente
+   Entrada   : atualizar(2, titulo=..., canal=...)
+   Esperado  : ('Vacinacao Gratuita', 'UBS / Escola')
+   Observado : ('Vacinacao Gratuita', 'UBS / Escola')
+   Resultado : OK
+
+[T15] Atualizar ID inexistente
+   Entrada   : atualizar(99, titulo='x')
+   Esperado  : False
+   Observado : False
+   Resultado : OK
+
+[T16] Atualizar com valor vazio
+   Entrada   : atualizar(2, titulo='')
+   Esperado  : ValueError: O campo 'titulo' e obrigatorio e nao pode ficar vazio.
+   Observado : ValueError: O campo 'titulo' e obrigatorio e nao pode ficar vazio.
+   Resultado : OK
+
+[T17] Registro intacto apos atualizacao invalida
+   Entrada   : titulo do ID 2
+   Esperado  : Vacinacao Gratuita
+   Observado : Vacinacao Gratuita
+   Resultado : OK
+
+[T18] Pesquisar por titulo (parcial, sem diferenciar maiusculas)
+   Entrada   : pesquisar('titulo','VACINA')
+   Esperado  : [2]
+   Observado : [2]
+   Resultado : OK
+
+[T19] Pesquisar por categoria
+   Entrada   : pesquisar('categoria','educ')
+   Esperado  : [5]
+   Observado : [5]
+   Resultado : OK
+
+[T20] Pesquisar sem resultados
+   Entrada   : pesquisar('titulo','zzz')
+   Esperado  : []
+   Observado : []
+   Resultado : OK
+
+[T21] Pesquisar por atributo invalido
+   Entrada   : pesquisar('canal','x')
+   Esperado  : ValueError: Pesquisa disponivel apenas por 'titulo' ou 'categoria'.
+   Observado : ValueError: Pesquisa disponivel apenas por 'titulo' ou 'categoria'.
+   Resultado : OK
+
+[T22] Ordenar por ID
+   Entrada   : ordenar('id')
+   Esperado  : [1, 2, 3, 4, 5]
+   Observado : [1, 2, 3, 4, 5]
+   Resultado : OK
+
+[T23] Ordenar por titulo
+   Entrada   : ordenar('titulo')
+   Esperado  : ['Bolsa Familia', 'Emissao de RG', 'Matricula Escolar', 'Mediacao de Conflitos', 'Vacinacao Gratuita']
+   Observado : ['Bolsa Familia', 'Emissao de RG', 'Matricula Escolar', 'Mediacao de Conflitos', 'Vacinacao Gratuita']
+   Resultado : OK
+
+[T24] Criterio de ordenacao invalido
+   Entrada   : ordenar('canal')
+   Esperado  : ValueError: Criterio de ordenacao invalido (use 'id' ou 'titulo').
+   Observado : ValueError: Criterio de ordenacao invalido (use 'id' ou 'titulo').
+   Resultado : OK
+
+[T25] Inserir apos ordenar (cauda correta)
+   Entrada   : inserir(ID 6)
+   Esperado  : [1, 2, 3, 4, 5, 6]
+   Observado : [1, 2, 3, 4, 5, 6]
+   Resultado : OK
+
+[T26] Excluir cabeca
+   Entrada   : remover(1)
+   Esperado  : ([2, 3, 4, 5, 6], True)
+   Observado : ([2, 3, 4, 5, 6], True)
+   Resultado : OK
+
+[T27] Excluir no meio
+   Entrada   : remover(4)
+   Esperado  : ([2, 3, 5, 6], True)
+   Observado : ([2, 3, 5, 6], True)
+   Resultado : OK
+
+[T28] Excluir cauda
+   Entrada   : remover(6)
+   Esperado  : ([2, 3, 5], True)
+   Observado : ([2, 3, 5], True)
+   Resultado : OK
+
+[T29] Inserir apos remover cauda
+   Entrada   : inserir(ID 7)
+   Esperado  : [2, 3, 5, 7]
+   Observado : [2, 3, 5, 7]
+   Resultado : OK
+
+[T30] Excluir ID inexistente
+   Entrada   : remover(99)
+   Esperado  : False
+   Observado : False
+   Resultado : OK
+
+[T31] Tamanho apos exclusoes
+   Entrada   : tamanho
+   Esperado  : 4
+   Observado : 4
+   Resultado : OK
+
+[T32] Esvaziar a lista por completo
+   Entrada   : remover todos
+   Esperado  : ([], 0, True)
+   Observado : ([], 0, True)
+   Resultado : OK
+
+==================================================
+Resumo: 32/32 cenarios aprovados
